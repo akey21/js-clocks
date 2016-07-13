@@ -1,4 +1,8 @@
-$ ()
+// $ ("#txt").css("color", "blue");
+
+
+
+$(document).ready(function () { 
 function startTime() {
     var today = new Date();
     var h = today.getHours();
@@ -15,6 +19,7 @@ function startTime() {
 
 
 }
+
 
 function isAMorPM(i) {
     if (i >12) {
@@ -35,3 +40,5 @@ function correctTime(i) {
     }
     return i;
 }
+
+});
