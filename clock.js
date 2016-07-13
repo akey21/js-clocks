@@ -1,44 +1,83 @@
-// $ ("#txt").css("color", "blue");
 
 
 
-$(document).ready(function () { 
-function startTime() {
+
+
+$(document).ready(function() {
+  function startTime() {
     var today = new Date();
     var h = today.getHours();
     var m = today.getMinutes();
     var s = today.getSeconds();
-    var ampm = isAMorPM ();
-    h = correctTime(h);
-    h = checkTime (h);
+    var ampm = amOrPm(h);
+    h = convertHours(h);
+    h = checkTime(h);
     m = checkTime(m);
     s = checkTime(s);
-    document.getElementById('txt').innerHTML =
-    h + ":" + m + ":" + s + ampm;
-    var t = setTimeout(startTime, 500);
+    background(s);
+    textColor(m);
+    fontSize(s);
+     $("#txt").html(h + ":" + m + ":" + s + ampm)
 
 
-}
+    setTimeout(startTime, 500);
+  }
 
-
-function isAMorPM(i) {
-    if (i >12) {
-        return "pm";
-    } else {
-        return "am";
+  function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i
     }
-}
-function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
     return i;
-}
+  }
 
-function correctTime(i) {
+  function convertHours(i) {
     if (i > 12) {
         i = i - 12;
-
     }
     return i;
+  }
+
+  function amOrPm(i) {
+    if (i < 12) {
+        return "AM";
+    } else {
+        return "PM";
+    }
+  }
+
+  startTime();
+
+var color = "#"
+
+function background(s) {
+    if ( s % 2 == 0 ) {
+    $("body").css("background", "lightblue")
+    } else {$("body").css("background", "pink")
+
+} 
+
 }
+
+
+
+
+    
+
+function textColor(m) {
+    if ( m % 2 == 1 ) {
+    $ ("#txt").css("color", "green")
+    } else { $ ("#txt").css("color", "blue")}
+
+}
+
+function fontSize(s) {
+    if (s % 2 == 0 ){
+        $("#txt").css("font-family", "verdana")
+    } else { $("#txt").css("font-family", "papyrus")}
+  
+}
+
+
+ 
 
 });
